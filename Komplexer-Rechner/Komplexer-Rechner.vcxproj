@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Source-Files\io.c" />
+    <ClCompile Include="src\Source-Files\main.c" />
+    <ClCompile Include="src\Source-Files\utility.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Header-Files\io.h" />
+    <ClInclude Include="src\Header-Files\main.h" />
+    <ClInclude Include="src\Header-Files\utility.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -174,9 +184,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Source-Files\main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
