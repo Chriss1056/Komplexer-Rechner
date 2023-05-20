@@ -23,3 +23,4 @@ int u_goto_xy(short x, short y);
 void u_inverse_color(short inverse);
 void u_red_color(short active);
 void u_green_color(short active);
+void u_yellow_color(const short active);

@@ -21,7 +21,13 @@
     <ClCompile Include="src\Source-Files\utility.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Source-Files\io.c">
+    <ClCompile Include="src\Source-Files\io-handler.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Source-Files\input.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Source-Files\calculate.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,10 +35,16 @@
     <ClInclude Include="src\Header-Files\utility.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Header-Files\io.h">
+    <ClInclude Include="src\Header-Files\io-handler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Header-Files\main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Header-Files\input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Header-Files\calculate.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,12 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Source-Files\io.c" />
+    <ClCompile Include="src\Source-Files\calculate.c" />
+    <ClCompile Include="src\Source-Files\input.c" />
+    <ClCompile Include="src\Source-Files\io-handler.c" />
     <ClCompile Include="src\Source-Files\main.c" />
     <ClCompile Include="src\Source-Files\utility.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Header-Files\io.h" />
+    <ClInclude Include="src\Header-Files\calculate.h" />
+    <ClInclude Include="src\Header-Files\input.h" />
+    <ClInclude Include="src\Header-Files\io-handler.h" />
     <ClInclude Include="src\Header-Files\main.h" />
     <ClInclude Include="src\Header-Files\utility.h" />
   </ItemGroup>

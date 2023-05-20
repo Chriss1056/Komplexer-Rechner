@@ -6,16 +6,18 @@
 #include <Windows.h>
 
 #include <utility.h>
-#include <io.h>
+#include <io-handler.h>
 
-typedef struct comp
+struct comp
 {
 	float f_re;
 	float f_im;
 };
 
-typedef struct polar
+struct polar
 {
 	float f_be;
 	float f_wi;
 };
+
+void draw_main_menu_frame();

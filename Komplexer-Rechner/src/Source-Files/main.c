@@ -1,7 +1,5 @@
 #include <main.h>
 
-void drawMainMenueFrame();
-
 int main()
 {
 	struct comp z1_k, z2_k;
@@ -29,7 +27,7 @@ int main()
 	{
 		system("cls");
 
-		drawMainMenueFrame();
+		draw_main_menu_frame();
 
 		if (auswahl == 1)
 		{
@@ -160,7 +158,7 @@ int main()
 	return 0;
 }
 
-void drawMainMenueFrame()
+void draw_main_menu_frame()
 {
 	u_goto_xy(0, 0);
 	printf("%c", (char)201);

@@ -62,3 +62,18 @@ void u_green_color(const short active)
 	}
 	SetConsoleTextAttribute(h_handle, w_attr);
 }
+
+void u_yellow_color(const short active)
+{
+	const HANDLE h_handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	WORD w_attr;
+	if (active)
+	{
+		w_attr = f_white | BACKGROUND_RED | BACKGROUND_GREEN;
+	}
+	else
+	{
+		w_attr = f_white | b_black;
+	}
+	SetConsoleTextAttribute(h_handle, w_attr);
+}
