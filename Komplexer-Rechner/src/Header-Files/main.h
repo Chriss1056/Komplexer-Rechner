@@ -1,12 +1,6 @@
 #pragma once
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
-#include <Windows.h>
-
 #include <utility.h>
-#include <io-handler.h>
 
 struct comp
 {
@@ -19,5 +13,7 @@ struct polar
 	float f_be;
 	float f_wi;
 };
+
+#include <io-handler.h>
 
 void draw_main_menu_frame();

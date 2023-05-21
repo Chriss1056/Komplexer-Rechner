@@ -1,4 +1,8 @@
 #include <main.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <Windows.h>
 
 int main()
 {
@@ -107,19 +111,19 @@ int main()
 					{
 					case 1:
 						{
-						input_one(&z1_k, &z1_p);
+						input_one(z1_k, z1_p);
 						tick = 0;
 						break;
 						}
 					case 2:
 						{
-						input_two(&z2_k, &z2_p);
+						input_two(z2_k, z2_p);
 						tick = 0;
 						break;
 						}
 					case 3:
 						{
-						calc_and_output(&z1_k, &z1_p, &z2_k, &z2_p);
+						calc_and_output(z1_k, z1_p, z2_k, z2_p);
 						tick = 0;
 						break;
 						}

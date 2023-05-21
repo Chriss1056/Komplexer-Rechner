@@ -1,4 +1,6 @@
 #include <utility.h>
+#include <conio.h>
+#include <math.h>
 
 int u_get_key()
 {
@@ -8,6 +10,11 @@ int u_get_key()
 		key += _getch();
 	}
 	return key;
+}
+
+int u_get_number_length(const float number)
+{
+	return log10f(number);
 }
 
 int u_goto_xy(const short x, const short y)

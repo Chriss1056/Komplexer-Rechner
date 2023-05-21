@@ -1,6 +1,8 @@
 #include <io-handler.h>
+#include <stdio.h>
+#include <conio.h>
 
-void input_one(struct comp* z1_k, struct polar* z1_p)
+void input_one(struct comp z1_k, struct polar z1_p)
 {
 	int auswahl, tick, terminate;
 
@@ -72,29 +74,29 @@ void input_one(struct comp* z1_k, struct polar* z1_p)
 					{
 					case 1:
 						{
-						//TODO Implement Function Input Komponentensystem
-						tick = 0;
-						break;
+							input_comp(&z1_k);
+							tick = 0;
+							break;
 						}
 					case 2:
 						{
-						//TODO Implement Function Input Polarsystem
-						tick = 0;
-						break;
+							input_polar(&z1_p);
+							tick = 0;
+							break;
 						}
 					case 3:
 						{
-						terminate = 0;
-						tick = 0;
-						break;
+							terminate = 0;
+							tick = 0;
+							break;
 						}
 					default:
 						{
-						system("cls");
-						fprintf(stderr, "Ups, something went wrong...");
-						Sleep(1000);
-						system("cls");
-						tick = 0;
+							system("cls");
+							fprintf(stderr, "Ups, something went wrong...");
+							Sleep(1000);
+							system("cls");
+							tick = 0;
 						}
 					}
 				}
@@ -106,7 +108,7 @@ void input_one(struct comp* z1_k, struct polar* z1_p)
 	} while (terminate);
 }
 
-void input_two(struct comp* z2_k, struct polar* z2_p)
+void input_two(struct comp z2_k, struct polar z2_p)
 {
 	int auswahl, tick, terminate;
 
@@ -178,13 +180,13 @@ void input_two(struct comp* z2_k, struct polar* z2_p)
 					{
 					case 1:
 					{
-						//TODO Implement Function Input Komponentensystem
+						input_comp(&z2_k);
 						tick = 0;
 						break;
 					}
 					case 2:
 					{
-						//TODO Implement Function Input Polarsystem
+						input_polar(&z2_p);
 						tick = 0;
 						break;
 					}
@@ -212,7 +214,7 @@ void input_two(struct comp* z2_k, struct polar* z2_p)
 	} while (terminate);
 }
 
-void calc_and_output(struct comp* z1_k, struct polar* z1_p, struct comp* z2_k, struct polar* z2_p)
+void calc_and_output(const struct comp z1_k, const struct polar z1_p, const struct comp z2_k, const struct polar z2_p)
 {
 	int tick, terminate, max_out_var;
 	
@@ -224,55 +226,81 @@ void calc_and_output(struct comp* z1_k, struct polar* z1_p, struct comp* z2_k, s
 	{
 		system("cls");
 
-		struct results results = s_calc_all(z1_k, z1_p, z2_k, z2_p);
+		const struct results results = s_calc_all(z1_k, z1_p, z2_k, z2_p);
 
-		draw_output_outlines(20);
+		draw_output_outlines(results.max_len);
 
 		u_goto_xy(1, 1);
-		printf("Z1 in K: ");
+		printf("Z1 in K: %.3f + j * %.3f", results.z1_kr.f_re, results.z1_kr.f_im);
 		u_goto_xy(1, 2);
-		printf("Z1 in P: ");
+		printf("Z1 in P: %.3f * e ^ ( j * %.3f%c )", results.z1_pr.f_be, results.z1_pr.f_wi, (char)248);
 
 		u_goto_xy(1, 4);
-		printf("Z2 in K: ");
+		printf("Z2 in K: %.3f + j * %.3f", results.z2_kr.f_re, results.z2_kr.f_im);
 		u_goto_xy(1, 5);
-		printf("Z2 in P: ");
+		printf("Z2 in P: %.3f * e ^ ( j * %.3f%c )", results.z2_pr.f_be, results.z2_pr.f_wi, (char)248);
 
 		u_goto_xy(1, 7);
-		printf("Z1+Z2 in K: ");
+		printf("Z1+Z2 in K: %.3f + j * %.3f", results.add_z1_z2_kr.f_re, results.add_z1_z2_kr.f_im);
 		u_goto_xy(1, 8);
-		printf("Z1+Z2 in P: ");
+		printf("Z1+Z2 in P: %.3f * e ^ ( j * %.3f%c )", results.add_z1_z2_pr.f_be, results.add_z1_z2_pr.f_wi, (char)248);
 
 		u_goto_xy(1, 10);
-		printf("Z1-Z2 in K: ");
+		printf("Z1-Z2 in K: %.3f + j * %.3f", results.sub_z1_z2_kr.f_re, results.sub_z1_z2_kr.f_im);
 		u_goto_xy(1, 11);
-		printf("Z1-Z2 in P: ");
+		printf("Z1-Z2 in P: %.3f * e ^ ( j * %.3f%c )", results.sub_z1_z2_pr.f_be, results.sub_z1_z2_pr.f_wi, (char)248);
 		u_goto_xy(1, 12);
-		printf("Z2-Z1 in K: ");
+		printf("Z2-Z1 in K: %.3f + j * %.3f", results.sub_z2_z1_kr.f_re, results.sub_z2_z1_kr.f_im);
 		u_goto_xy(1, 13);
-		printf("Z2-Z1 in P: ");
+		printf("Z2-Z1 in P: %.3f * e ^ ( j * %.3f%c )", results.sub_z2_z1_pr.f_be, results.sub_z2_z1_pr.f_wi, (char)248);
 
 		u_goto_xy(1, 15);
-		printf("Z1*Z2 in K: ");
+		printf("Z1*Z2 in K: %.3f + j * %.3f", results.mul_z1_z2_kr.f_re, results.mul_z1_z2_kr.f_im);
 		u_goto_xy(1, 16);
-		printf("Z1*Z2 in P: ");
+		printf("Z1*Z2 in P: %.3f * e ^ ( j * %.3f%c )", results.mul_z1_z2_pr.f_be, results.mul_z1_z2_pr.f_wi, (char)248);
 
 		u_goto_xy(1, 18);
-		printf("Z1%cZ2 in K: ", (char)246);
+		if (results.z2_kr.f_re != 0 || results.z2_kr.f_im != 0)
+		{
+			printf("Z1%cZ2 in K: %.3f + j * %.3f", (char)246, results.div_z1_z2_kr.f_re, results.div_z1_z2_kr.f_im);
+		}
+		else
+		{
+			printf("Z1%cZ2 in K: Undef.", (char)246);
+		}
 		u_goto_xy(1, 19);
-		printf("Z1%cZ2 in P: ", (char)246);
+		if (results.z2_pr.f_be != 0)
+		{
+			printf("Z1%cZ2 in P: %.3f * e ^ ( j * %.3f%c )", (char)246, results.div_z1_z2_pr.f_be, results.div_z1_z2_pr.f_wi, (char)248);
+		}
+		else
+		{
+			printf("Z1%cZ2 in P: Undef.", (char)246);
+		}
 		u_goto_xy(1, 20);
-		printf("Z2%cZ1 in K: ", (char)246);
+		if (results.z1_kr.f_re != 0 || results.z1_kr.f_im != 0)
+		{
+			printf("Z2%cZ1 in K: %.3f + j * %.3f", (char)246, results.div_z2_z1_kr.f_re, results.div_z2_z1_kr.f_im);
+		}
+		else
+		{
+			printf("Z2%cZ1 in K: Undef.", (char)246);
+		}
 		u_goto_xy(1, 21);
-		printf("Z2%cZ1 in P: ", (char)246);
+		if (results.z1_pr.f_be != 0)
+		{
+			printf("Z2%cZ1 in P: %.3f * e ^ ( j * %.3f%c )", (char)246, results.div_z2_z1_pr.f_be, results.div_z2_z1_pr.f_wi, (char)248);
+		}
+		else
+		{
+			printf("Z2%cZ1 in P: Undef.", (char)246);
+		}
 
 		u_goto_xy(2, 23);
 		u_yellow_color(1);
 		printf("Zur%cck.", (char)129);
 		u_yellow_color(0);
 		u_goto_xy(0, 25);
-
-		printf("%f", results.z1_kr->f_re);
 
 		do
 		{

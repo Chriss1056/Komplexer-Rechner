@@ -1,7 +1,6 @@
 #pragma once
 
 #include <Windows.h>
-#include <conio.h>
 
 typedef enum keys
 {
@@ -19,6 +18,7 @@ typedef enum colors
 } e_colors;
 
 int u_get_key();
+int u_get_number_length(float number);
 int u_goto_xy(short x, short y);
 void u_inverse_color(short inverse);
 void u_red_color(short active);
