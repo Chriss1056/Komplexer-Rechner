@@ -1,6 +1,6 @@
 #pragma once
 
-#include "utility.h"
+#include "../Header-Files/utility.h"
 
 struct comp
 {
@@ -14,6 +14,6 @@ struct polar
 	float f_wi;
 };
 
-#include "io-handler.h"
+#include "../Header-Files/io-handler.h"
 
 void draw_main_menu_frame();

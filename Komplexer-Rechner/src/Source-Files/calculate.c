@@ -1,4 +1,4 @@
-#include "calculate.h"
+#include "../Header-Files/calculate.h"
 #include <math.h>
 
 struct results s_calc_all(const struct comp z1_k, const struct polar z1_p, const struct comp z2_k, const struct polar z2_p)

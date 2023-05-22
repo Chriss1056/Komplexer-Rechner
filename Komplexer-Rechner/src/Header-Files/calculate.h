@@ -1,6 +1,6 @@
 #pragma once
 
-#include "main.h"
+#include "../Header-Files/main.h"
 
 struct results
 {

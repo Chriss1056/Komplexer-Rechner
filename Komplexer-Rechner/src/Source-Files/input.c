@@ -1,4 +1,4 @@
-#include "input.h"
+#include "../Header-Files/input.h"
 #include <stdio.h>
 
 void input_comp(struct comp* z)
