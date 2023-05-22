@@ -1,11 +1,17 @@
 #include <calculate.h>
 #include <math.h>
 
-struct results s_calc_all(struct comp z1_k, struct polar z1_p, struct comp z2_k, struct polar z2_p)
+struct results s_calc_all(const struct comp z1_k, const struct polar z1_p, const struct comp z2_k, const struct polar z2_p)
 {
 	struct results results;
 
 	default_init(&results);
+
+	results.z1_kr = z1_k;
+	results.z1_pr = z1_p;
+
+	results.z2_kr = z2_k;
+	results.z2_pr = z2_p;
 
 	c_pre_calc(&results);
 
@@ -96,10 +102,67 @@ void c_sub(struct results* results)
 
 void c_mul(struct results* results)
 {
+	results->mul_z1_z2_pr.f_be = results->z1_pr.f_be * results->z2_pr.f_be;
+	results->mul_z1_z2_pr.f_wi = results->z1_pr.f_wi + results->z2_pr.f_wi;
+
+	struct comp tmp;
+	to_comp(&tmp, results->mul_z1_z2_pr);
+	results->mul_z1_z2_kr = tmp;
+
+	const int mul_z1_z2_kr_f_re = u_get_number_length(results->mul_z1_z2_kr.f_re);
+	const int mul_z1_z2_kr_f_im = u_get_number_length(results->mul_z1_z2_kr.f_im);
+	const int mul_z1_z2_kr = mul_z1_z2_kr_f_re + mul_z1_z2_kr_f_im + 29;
+
+	const int mul_z1_z2_pr_f_be = u_get_number_length(results->mul_z1_z2_pr.f_be);
+	const int mul_z1_z2_pr_f_wi = u_get_number_length(results->mul_z1_z2_pr.f_wi);
+	const int mul_z1_z2_pr = mul_z1_z2_pr_f_be + mul_z1_z2_pr_f_wi + 38;
+
+	const int max_length = max(mul_z1_z2_pr, mul_z1_z2_kr);
+	if (max_length > results->max_len)
+	{
+		results->max_len = max_length;
+	}
 }
 
 void c_div(struct results* results)
 {
+	results->div_z1_z2_pr.f_be = results->z1_pr.f_be / results->z2_pr.f_be;
+	results->div_z1_z2_pr.f_wi = results->z1_pr.f_wi - results->z2_pr.f_wi;
+
+	results->div_z2_z1_pr.f_be = results->z2_pr.f_be / results->z1_pr.f_be;
+	results->div_z2_z1_pr.f_wi = results->z2_pr.f_wi - results->z1_pr.f_wi;
+
+	struct comp tmp12;
+	to_comp(&tmp12, results->div_z1_z2_pr);
+	results->div_z1_z2_kr = tmp12;
+
+	struct comp tmp21;
+	to_comp(&tmp21, results->div_z2_z1_pr);
+	results->div_z2_z1_kr = tmp21;
+
+	const int div_z1_z2_kr_f_re = u_get_number_length(results->div_z1_z2_kr.f_re);
+	const int div_z1_z2_kr_f_im = u_get_number_length(results->div_z1_z2_kr.f_im);
+	const int div_z1_z2_kr = div_z1_z2_kr_f_re + div_z1_z2_kr_f_im + 29;
+
+	const int div_z2_z1_kr_f_re = u_get_number_length(results->div_z2_z1_kr.f_re);
+	const int div_z2_z1_kr_f_im = u_get_number_length(results->div_z2_z1_kr.f_im);
+	const int div_z2_z1_kr = div_z2_z1_kr_f_re + div_z2_z1_kr_f_im + 29;
+
+	const int div_z1_z2_pr_f_be = u_get_number_length(results->div_z1_z2_pr.f_be);
+	const int div_z1_z2_pr_f_wi = u_get_number_length(results->div_z1_z2_pr.f_wi);
+	const int div_z1_z2_pr = div_z1_z2_pr_f_be + div_z1_z2_pr_f_wi + 38;
+
+	const int div_z2_z1_pr_f_be = u_get_number_length(results->div_z2_z1_pr.f_be);
+	const int div_z2_z1_pr_f_wi = u_get_number_length(results->div_z2_z1_pr.f_wi);
+	const int div_z2_z1_pr = div_z2_z1_pr_f_be + div_z2_z1_pr_f_wi + 38;
+
+	const int max_length_kr = max(div_z1_z2_kr, div_z2_z1_kr);
+	const int max_length_pr = max(div_z1_z2_pr, div_z2_z1_pr);
+	const int max_length = max(max_length_pr, max_length_kr);
+	if (max_length > results->max_len)
+	{
+		results->max_len = max_length;
+	}
 }
 
 void to_comp(struct comp* out, const struct polar in)
@@ -126,10 +189,10 @@ void default_init(struct results* results)
 {
 	results->max_len = 38;
 
-	results->z1_kr.f_re = 10;
-	results->z1_kr.f_im = 10;
-	results->z2_kr.f_re = 5;
-	results->z2_kr.f_im = 5;
+	results->z1_kr.f_re = 0;
+	results->z1_kr.f_im = 0;
+	results->z2_kr.f_re = 0;
+	results->z2_kr.f_im = 0;
 
 	results->z1_pr.f_be = 0;
 	results->z1_pr.f_wi = 0;

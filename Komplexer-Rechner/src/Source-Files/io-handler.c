@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <conio.h>
 
-void input_one(struct comp z1_k, struct polar z1_p)
+void input_one(struct comp* z1_k, struct polar* z1_p)
 {
 	int auswahl, tick, terminate;
 
@@ -74,13 +74,13 @@ void input_one(struct comp z1_k, struct polar z1_p)
 					{
 					case 1:
 						{
-							input_comp(&z1_k);
+							input_comp(z1_k);
 							tick = 0;
 							break;
 						}
 					case 2:
 						{
-							input_polar(&z1_p);
+							input_polar(z1_p);
 							tick = 0;
 							break;
 						}
@@ -108,7 +108,7 @@ void input_one(struct comp z1_k, struct polar z1_p)
 	} while (terminate);
 }
 
-void input_two(struct comp z2_k, struct polar z2_p)
+void input_two(struct comp* z2_k, struct polar* z2_p)
 {
 	int auswahl, tick, terminate;
 
@@ -180,13 +180,13 @@ void input_two(struct comp z2_k, struct polar z2_p)
 					{
 					case 1:
 					{
-						input_comp(&z2_k);
+						input_comp(z2_k);
 						tick = 0;
 						break;
 					}
 					case 2:
 					{
-						input_polar(&z2_p);
+						input_polar(z2_p);
 						tick = 0;
 						break;
 					}

@@ -111,13 +111,13 @@ int main()
 					{
 					case 1:
 						{
-						input_one(z1_k, z1_p);
+						input_one(&z1_k, &z1_p);
 						tick = 0;
 						break;
 						}
 					case 2:
 						{
-						input_two(z2_k, z2_p);
+						input_two(&z2_k, &z2_p);
 						tick = 0;
 						break;
 						}
