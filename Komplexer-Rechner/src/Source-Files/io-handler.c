@@ -75,12 +75,14 @@ void input_one(struct comp* z1_k, struct polar* z1_p)
 					case 1:
 						{
 							input_comp(z1_k);
+							terminate = 0;
 							tick = 0;
 							break;
 						}
 					case 2:
 						{
 							input_polar(z1_p);
+							terminate = 0;
 							tick = 0;
 							break;
 						}
@@ -181,12 +183,14 @@ void input_two(struct comp* z2_k, struct polar* z2_p)
 					case 1:
 					{
 						input_comp(z2_k);
+						terminate = 0;
 						tick = 0;
 						break;
 					}
 					case 2:
 					{
 						input_polar(z2_p);
+						terminate = 0;
 						tick = 0;
 						break;
 					}

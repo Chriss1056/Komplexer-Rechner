@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Header-Files/main.h"
-#include "../Header-Files/calculate.h"
-#include "../Header-Files/input.h"
+#include "main.h"
+#include "calculate.h"
+#include "input.h"
 
 void input_one(struct comp* z1_k, struct polar* z1_p);
 void input_two(struct comp* z2_k, struct polar* z2_p);
