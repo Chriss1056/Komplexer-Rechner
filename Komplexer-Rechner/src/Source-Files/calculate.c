@@ -25,13 +25,31 @@ struct results s_calc_all(const struct comp z1_k, const struct polar z1_p, const
 
 void c_pre_calc(struct results* results)
 {
-	struct polar tmp_1;
-	to_polar(&tmp_1, results->z1_kr);
-	results->z1_pr = tmp_1;
+	if (results->z1_kr.f_re == 0 && results->z1_kr.f_im == 0)
+	{
+		struct comp tmp;
+		to_comp(&tmp, results->z1_pr);
+		results->z1_kr = tmp;
+	}
+	else if (results->z1_pr.f_be == 0 && results->z1_pr.f_wi == 0)
+	{
+		struct polar tmp;
+		to_polar(&tmp, results->z1_kr);
+		results->z1_pr = tmp;
+	}
 
-	struct polar tmp_2;
-	to_polar(&tmp_2, results->z2_kr);
-	results->z2_pr = tmp_2;
+	if (results->z2_kr.f_re == 0 && results->z2_kr.f_im == 0)
+	{
+		struct comp tmp;
+		to_comp(&tmp, results->z2_pr);
+		results->z2_kr = tmp;
+	}
+	else if (results->z2_pr.f_be == 0 && results->z2_pr.f_wi == 0)
+	{
+		struct polar tmp;
+		to_polar(&tmp, results->z2_kr);
+		results->z2_pr = tmp;
+	}
 }
 
 void c_add(struct results* results)
