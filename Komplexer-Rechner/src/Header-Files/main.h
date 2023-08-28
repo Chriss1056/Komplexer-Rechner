@@ -15,5 +15,3 @@ struct polar
 };
 
 #include "io-handler.h"
-
-void draw_main_menu_frame();

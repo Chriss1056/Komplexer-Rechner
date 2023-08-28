@@ -14,20 +14,16 @@ int u_get_key()
 
 int u_get_number_length(const float number)
 {
-	return log10f(number);
+	return (int)ceilf(log10f(number));
 }
 
-int u_goto_xy(const short x, const short y)
+void u_goto_xy(const unsigned short x, const unsigned short y)
 {
-	const HANDLE h_handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	const COORD c_console_cursor_pos = {x, y};
-	SetConsoleCursorPosition(h_handle, c_console_cursor_pos);
-	return 0;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), (COORD){ x, y });
 }
 
-void u_inverse_color(const short inverse)
+void u_inverse_color(const unsigned char inverse)
 {
-	const HANDLE h_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	WORD w_attr;
 	if (inverse)
 	{
@@ -37,12 +33,11 @@ void u_inverse_color(const short inverse)
 	{
 		w_attr = f_white | b_black;
 	}
-	SetConsoleTextAttribute(h_handle, w_attr);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), w_attr);
 }
 
-void u_red_color(const short active)
+void u_red_color(const unsigned char active)
 {
-	const HANDLE h_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	WORD w_attr;
 	if (active)
 	{
@@ -52,12 +47,11 @@ void u_red_color(const short active)
 	{
 		w_attr = f_white | b_black;
 	}
-	SetConsoleTextAttribute(h_handle, w_attr);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), w_attr);
 }
 
-void u_green_color(const short active)
+void u_green_color(const unsigned char active)
 {
-	const HANDLE h_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	WORD w_attr;
 	if (active)
 	{
@@ -67,12 +61,11 @@ void u_green_color(const short active)
 	{
 		w_attr = f_white | b_black;
 	}
-	SetConsoleTextAttribute(h_handle, w_attr);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), w_attr);
 }
 
-void u_yellow_color(const short active)
+void u_yellow_color(const unsigned char active)
 {
-	const HANDLE h_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	WORD w_attr;
 	if (active)
 	{
@@ -82,5 +75,5 @@ void u_yellow_color(const short active)
 	{
 		w_attr = f_white | b_black;
 	}
-	SetConsoleTextAttribute(h_handle, w_attr);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), w_attr);
 }

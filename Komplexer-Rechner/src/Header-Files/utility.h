@@ -19,8 +19,8 @@ typedef enum colors
 
 int u_get_key();
 int u_get_number_length(float number);
-int u_goto_xy(short x, short y);
-void u_inverse_color(short inverse);
-void u_red_color(short active);
-void u_green_color(short active);
-void u_yellow_color(const short active);
+void u_goto_xy(unsigned short x, unsigned short y);
+void u_inverse_color(unsigned char inverse);
+void u_red_color(unsigned char active);
+void u_green_color(unsigned char active);
+void u_yellow_color(unsigned char active);

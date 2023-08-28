@@ -4,6 +4,49 @@
 #include <conio.h>
 #include <Windows.h>
 
+void draw_main_menu_frame()
+{
+	u_goto_xy(0, 0);
+	printf("%c", (char)201);
+	for (int i = 0; i < 30; i++)
+	{
+		printf("%c", (char)205);
+	}
+	printf("%c", (char)187);
+	u_goto_xy(0, 1);
+	for (int i = 0; i < 6; i++)
+	{
+		u_goto_xy(0, i + 1);
+		printf("%c", (char)186);
+		u_goto_xy(31, i + 1);
+		printf("%c", (char)186);
+	}
+	u_goto_xy(0, 7);
+	printf("%c", (char)200);
+	for (int i = 0; i < 30; i++)
+	{
+		printf("%c", (char)205);
+	}
+	printf("%c", (char)188);
+	u_goto_xy(0, 3);
+	printf("%c", (char)204);
+	for (int i = 0; i < 30; i++)
+	{
+		printf("%c", (char)205);
+	}
+	printf("%c", (char)185);
+	u_goto_xy(0, 5);
+	printf("%c", (char)204);
+	for (int i = 0; i < 30; i++)
+	{
+		printf("%c", (char)205);
+	}
+	printf("%c", (char)185);
+	u_goto_xy(1, 0);
+	printf("Main Menue");
+	u_goto_xy(0, 8);
+}
+
 int main()
 {
 	struct comp z1_k, z2_k;
@@ -160,47 +203,4 @@ int main()
 	printf("Bye, bye...\n\n");
 	system("pause");
 	return 0;
-}
-
-void draw_main_menu_frame()
-{
-	u_goto_xy(0, 0);
-	printf("%c", (char)201);
-	for (int i = 0; i < 30; i++)
-	{
-		printf("%c", (char)205);
-	}
-	printf("%c", (char)187);
-	u_goto_xy(0, 1);
-	for (int i = 0; i < 6; i++)
-	{
-		u_goto_xy(0, i + 1);
-		printf("%c", (char)186);
-		u_goto_xy(31, i + 1);
-		printf("%c", (char)186);
-	}
-	u_goto_xy(0, 7);
-	printf("%c", (char)200);
-	for (int i = 0; i < 30; i++)
-	{
-		printf("%c", (char)205);
-	}
-	printf("%c", (char)188);
-	u_goto_xy(0, 3);
-	printf("%c", (char)204);
-	for (int i = 0; i < 30; i++)
-	{
-		printf("%c", (char)205);
-	}
-	printf("%c", (char)185);
-	u_goto_xy(0, 5);
-	printf("%c", (char)204);
-	for (int i = 0; i < 30; i++)
-	{
-		printf("%c", (char)205);
-	}
-	printf("%c", (char)185);
-	u_goto_xy(1, 0);
-	printf("Main Menue");
-	u_goto_xy(0, 8);
 }
